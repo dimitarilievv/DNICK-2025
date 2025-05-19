@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand" style="color:#db3546" href="/index">Cakery&Bakery</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/index">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/index">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/add">Add</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="/index">Pricing</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid bg-danger" style="height: 450px">
+    <div class="container d-flex w-100 align-items-center">
+        <div class="w-50 mt-5">
+            <h1 class="text-white">Explore the wonderland of tastes!</h1>
+            <p class="text-white">Assignment for HCI Exam in September 2024</p>
+            <button class="btn btn-light text-danger">Get Started</button>
+            <button class="btn btn-danger border-white">Learn More</button>
+        </div>
+        <div class="w-50 mt-5">
+            <img src="../../static/photo1.jpg" class="card-img-top" style="height: 320px" alt="...">
+        </div>
+    </div>
+</div>
+<div class="container-fluid d-flex align-items-center row" style="height: 20em">
+    <div class="col-3"></div>
+    <div class="col-6 text-center">
+        <h5 class="fw-normal">"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur corporis doloribus
+            facere laudantium
+            provident repudiandae sint temporibus! Assumenda error et, incidunt maxime nobis obcaecati."
+        </h5>
+        <div class="d-flex flex-row align-items-center justify-content-center mt-3 ">
+            <img src="../../static/avatar.png" class="card-img-top" style="width: 30px;height: 30px" alt="...">
+            <h6>John Doe / CEO, Cakery&Bakery</h6>
+        </div>
+
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<div class="container">
+    <h3 class="text-center text-danger">Products</h3>
+    <p class="text-center">Add more products in the edit form!</p>
+    <div class="d-flex justify-content-evenly mt-2">
+        {% for cake in cake_list %}
+        <div class="card my-5 shadow" style="width: 18rem;">
+            <img src="{{ cake.photo.url }}" class="card-img-top" style="height: 200px; object-fit: cover" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ cake.name }}</h5>
+                <p class="card-text" style="font-size: 12px">{{ cake.description }} </p>
+                <div class="d-flex flex-row align-items-center justify-content-start mt-3 gap-2">
+                    <img src="{{cake.baker.image.url}}" class="card-img-top rounded-5" style="width: 30px;height: 30px" alt="...">
+                    <h6>{{cake.baker.name}} {{cake.baker.surname}}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg bg-danger">
+    <div class="container">
+        <a class="navbar-brand text-white fs-6" href="/index">Copyright &copy; HCI 2024</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-6" aria-current="page" href="/index">Privacy</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-6" aria-current="page" href="/index">Term</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white fs-6" aria-current="page" href="/add">Add</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+</body>
+</html>
