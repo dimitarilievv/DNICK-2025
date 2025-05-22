@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Repairs</title>
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}"/>
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.js' %}"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/index">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/repairs">Repairs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Manufacturers</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid bg-danger row text-white"
+     style="height: 400px;background-image: url('../../static/image1.jpg');background-size: cover">
+    <div class="col-1"></div>
+    <div class="col-5 mt-5">
+        <h1>HONEST, QUALITY WORK AT AFFORDABLE PRICES</h1>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+            industry's standard dummy text ever since the 1500s.</p>
+        <button class="btn btn-primary">Get free quotes</button>
+    </div>
+    <div class="col-6"></div>
+</div>
+<div class="container d-flex justify-content-evenly mb-5">
+    <div class="row mt-5">
+        {% for service in service_list %}
+        <div class="col-4">
+            <div class="card bg-black text-white mt-3 rounded-0" style="width: 15rem;">
+                <img src="{{ service.image.url }}" class="card-img-top object-fit-cover" style="height: 10rem"
+                     alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.code }}</h5>
+                    <p class="card-title">{{ service.car.type }}</p>
+                    <p class="card-title text-truncate">{{ service.description }}</p>
+                    <button class="btn bg-black border-1 text-danger border-danger">Fix</button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<div class="py-5 d-flex justify-content-center bg-secondary-subtle">
+    <form method="post" action="{% url 'repairs' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
