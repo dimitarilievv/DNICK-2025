@@ -1,4 +1,4 @@
-# 🎨 Human and Computer Interaction Design Projects – Backend (Django) & Frontend (Bootstrap)
+# Human and Computer Interaction Design Projects – Backend (Django) & Frontend (Bootstrap)
 
 This repository contains several mini projects developed during the **Human and Computer Interaction Design** course. The focus is on backend development using **Django**, especially leveraging the powerful Django Admin interface, along with frontend styling using **Bootstrap**.
 
